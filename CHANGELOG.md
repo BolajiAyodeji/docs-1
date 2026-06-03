@@ -62,6 +62,7 @@ and this project adheres to
 - ♿️(frontend) add aria-hidden to decorative avatar SVGs in share modal #2324
 - 🏗️(frontend) move comments to its own folder feature #2374
 - ♿️(frontend) align mobile header menu aria-label i18n pattern #2377
+- ♿️(frontend) align search modal field label with placeholder #2384
 
 ### Fixed
 
