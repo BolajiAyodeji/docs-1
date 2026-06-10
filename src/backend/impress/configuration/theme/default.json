@@ -165,6 +165,12 @@
     "ready_template_url": ""
   },
   "help": {
-    "documentation_url": ""
+    "documentation_url": "",
+    "legal_links": {
+      "personal_data": "https://lasuite.numerique.gouv.fr/legal/docs/donnees-personnelles-cookies",
+      "terms_of_use": "https://lasuite.numerique.gouv.fr/legal/docs/modalite-utilisation",
+      "accessibility_statement": "https://lasuite.numerique.gouv.fr/legal/docs/declaration-accessibilite",
+      "legal_notice": "https://lasuite.numerique.gouv.fr/legal/docs"
+    }
   }
 }
