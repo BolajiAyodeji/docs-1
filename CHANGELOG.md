@@ -15,8 +15,9 @@ and this project adheres to
 - 👷(CI) remove test-e2e-other-browser job #2404
 - ♿️(frontend) use heading element for pinned documents section title #2380
 - ♿️(frontend) use anchor links for table of contents entries #2390
+- ♿️(frontend) add configurable legal submenu in help menu and remove crisp #2416
 
-### Fixed 
+### Fixed
 
 - 🐛(frontend) overlap of block menu dropdown #2406
 

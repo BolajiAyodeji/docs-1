@@ -35,10 +35,15 @@ export const LeftPanel = () => {
 export const LeftPanelDesktop = () => {
   const { t } = useTranslation();
   const { data: config } = useConfig();
+  const legalLinks = config?.theme_customization?.help?.legal_links;
   const showHelpMenu =
     config?.theme_customization?.onboarding?.enabled ||
     !!config?.theme_customization?.help?.documentation_url ||
-    !!config?.theme_customization?.help?.legal_links;
+    !!config?.theme_customization?.help?.support_mailto ||
+    !!legalLinks?.personal_data ||
+    !!legalLinks?.terms_of_use ||
+    !!legalLinks?.accessibility_statement ||
+    !!legalLinks?.legal_notice;
 
   return (
     <Box

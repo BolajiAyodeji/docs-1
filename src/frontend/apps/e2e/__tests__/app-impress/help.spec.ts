@@ -1,5 +1,7 @@
 import { expect, test } from '@playwright/test';
 
+import theme_customization from '../../../../../backend/impress/configuration/theme/default.json';
+
 import {
   TestLanguage,
   getCurrentConfig,
@@ -68,6 +70,64 @@ test.describe('Help feature', () => {
 
       await expect(newPage).toHaveURL(documentationUrl);
     });
+  });
+
+  test.describe('Support button', () => {
+    if (process.env.IS_INSTANCE !== 'true') {
+      test('is not displayed if support_mailto is not set', async ({
+        page,
+      }) => {
+        await overrideConfig(page, {
+          theme_customization: {
+            ...theme_customization,
+            help: {
+              ...theme_customization.help,
+              support_mailto: '',
+            },
+          },
+        });
+
+        await page.goto('/');
+
+        await page.getByRole('button', { name: 'Open help menu' }).click();
+        await expect(
+          page.getByRole('menuitem', { name: 'Get Support' }),
+        ).toBeHidden();
+      });
+
+      test('is displayed if support_mailto is set', async ({ page }) => {
+        await overrideConfig(page, { theme_customization });
+
+        await page.goto('/');
+
+        await page.getByRole('button', { name: 'Open help menu' }).click();
+        await expect(
+          page.getByRole('menuitem', {
+            name: 'Get Support',
+          }),
+        ).toBeVisible();
+      });
+    }
+
+    if (process.env.IS_INSTANCE === 'true') {
+      test('is displayed when support_mailto is configured', async ({
+        page,
+      }) => {
+        const currentConfig = await getCurrentConfig(page);
+        test.skip(
+          !currentConfig.theme_customization?.help?.support_mailto,
+          'Support mailto is not configured',
+        );
+        await page.goto('/');
+
+        await page.getByRole('button', { name: 'Open help menu' }).click();
+        await expect(
+          page.getByRole('menuitem', {
+            name: 'Get Support',
+          }),
+        ).toBeVisible();
+      });
+    }
   });
 
   test.describe('Onboarding modal', () => {
