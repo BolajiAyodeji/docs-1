@@ -23,6 +23,7 @@ and this project adheres to
 
 - 🐛(frontend) overlap of block menu dropdown #2406
 - ⚡️(backend) fix N+1 queries when serializing thread comments #2415
+- 🐛(frontend) fix removed item in the tree #2420
 
 ## [v5.2.1] - 2026-06-05
 
