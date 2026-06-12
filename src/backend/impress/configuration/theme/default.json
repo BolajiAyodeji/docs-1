@@ -168,10 +168,10 @@
     "documentation_url": "",
     "support_mailto": "mailto:support-docs@numerique.gouv.fr?subject=Aide%20Docs%27",
     "legal_links": {
-      "personal_data": "https://lasuite.numerique.gouv.fr/legal/docs/donnees-personnelles-cookies",
-      "terms_of_use": "https://lasuite.numerique.gouv.fr/legal/docs/modalite-utilisation",
-      "accessibility_statement": "https://lasuite.numerique.gouv.fr/legal/docs/declaration-accessibilite",
-      "legal_notice": "https://lasuite.numerique.gouv.fr/legal/docs"
+      "personal_data": "",
+      "terms_of_use": "",
+      "accessibility_statement": "",
+      "legal_notice": ""
     }
   }
 }
