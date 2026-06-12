@@ -1,8 +1,7 @@
 import { expect, test } from '@playwright/test';
 
-import theme_customization from '../../../../../backend/impress/configuration/theme/default.json';
-
 import {
+  CONFIG,
   TestLanguage,
   getCurrentConfig,
   overrideConfig,
@@ -89,9 +88,9 @@ test.describe('Help feature', () => {
       }) => {
         await overrideConfig(page, {
           theme_customization: {
-            ...theme_customization,
+            ...CONFIG.theme_customization,
             help: {
-              ...theme_customization.help,
+              ...CONFIG.theme_customization.help,
               support_mailto: '',
             },
           },
@@ -106,7 +105,9 @@ test.describe('Help feature', () => {
       });
 
       test('is displayed if support_mailto is set', async ({ page }) => {
-        await overrideConfig(page, { theme_customization });
+        await overrideConfig(page, {
+          theme_customization: CONFIG.theme_customization,
+        });
 
         await page.goto('/');
 
@@ -145,9 +146,9 @@ test.describe('Help feature', () => {
       test('is not displayed if legal_links are not set', async ({ page }) => {
         await overrideConfig(page, {
           theme_customization: {
-            ...theme_customization,
+            ...CONFIG.theme_customization,
             help: {
-              ...theme_customization.help,
+              ...CONFIG.theme_customization.help,
               legal_links: {
                 personal_data: '',
                 terms_of_use: '',
@@ -164,7 +165,9 @@ test.describe('Help feature', () => {
         await page.goto('/');
 
         await page.getByRole('button', { name: 'Open help menu' }).click();
-        await expect(page.getByRole('menuitem', { name: 'Legal' })).toBeHidden();
+        await expect(
+          page.getByRole('menuitem', { name: 'Legal' }),
+        ).toBeHidden();
       });
 
       test('is displayed and opens legal links when legal_links are set', async ({
@@ -172,9 +175,9 @@ test.describe('Help feature', () => {
       }) => {
         await overrideConfig(page, {
           theme_customization: {
-            ...theme_customization,
+            ...CONFIG.theme_customization,
             help: {
-              ...theme_customization.help,
+              ...CONFIG.theme_customization.help,
               legal_links: legalLinks,
             },
             onboarding: {
@@ -231,7 +234,9 @@ test.describe('Help feature', () => {
         await page.goto('/');
 
         await page.getByRole('button', { name: 'Open help menu' }).click();
-        await expect(page.getByRole('menuitem', { name: 'Legal' })).toBeVisible();
+        await expect(
+          page.getByRole('menuitem', { name: 'Legal' }),
+        ).toBeVisible();
       });
     }
   });
