@@ -92,8 +92,8 @@ const DocSubPageLoadMore = (props: TreeViewNodeProps<Doc>) => {
       $justify="center"
       $padding={{ vertical: 'xs' }}
       role="status"
-      aria-label={t('Loading more documents')}
     >
+      <span className="sr-only">{t('Loading more documents')}</span>
       <Spinner size="sm" aria-hidden="true" />
     </Box>
   );
